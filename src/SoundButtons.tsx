@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React  from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import SoundPlayer from "react-native-sound-player";
+import sounds from "./sounds.json";
 
 function SoundButton({title, file}: { title: string, file: any }) {
   function play() {
@@ -15,11 +16,9 @@ function SoundButton({title, file}: { title: string, file: any }) {
 
 export default () => (
     <View style={styles.container}>
-        <SoundButton title="Was macht das?" file={"was_macht_das"} />
-        <SoundButton title="Optimal" file={"optimal"} />
-        <SoundButton title="Zappzarapp Anzeige" file={"zappzarapp_anzeige"} />
-        <SoundButton title="Penner" file={"penner"} />
-        <SoundButton title="Kapitän" file={"captain_mit_patent"} />
+      {sounds.map((sound, i) => (
+        <SoundButton key={i} title={sound.title} file={sound.file} />
+      ))}
     </View>
 );
 
@@ -31,13 +30,11 @@ const styles = StyleSheet.create({
     },
     button: {
         flex: 1,
-        flexGrow: 0,
         flexBasis: "30%",
         height: 40,
         marginHorizontal: 5,
         marginVertical: 10,
         justifyContent: "center",
-        alignItems: "center",
         backgroundColor: "lightgrey",
         borderRadius: 3,
     },
