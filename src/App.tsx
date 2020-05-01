@@ -5,7 +5,8 @@ import SoundButtons from "./SoundButtons";
 export default function App() {
   return (
     <View style={styles.app}>
-      <Text style={styles.heading}>Penny Soundboard</Text>
+      <Text style={styles.heading}>Penny Reeperbahn <Text style={styles.headingSub}>Soundboard</Text></Text>
+      <View style={styles.separator} />
       <SoundButtons />
     </View>
   );
@@ -14,21 +15,26 @@ export default function App() {
 const styles = StyleSheet.create({
   app: {
     flex: 1,
-    marginTop: StatusBar.currentHeight
+    backgroundColor: 'red',
   },
   container: {
     flex: 1,
     flexDirection: "column",
     flexWrap: "wrap",
     justifyContent: 'space-around',
-    backgroundColor: '#fff',
   },
   heading: {
     fontSize: 30,
     paddingVertical: 10,
-    backgroundColor: "red",
-    color: "white",
+    color: "#FFD503",
     fontWeight: "bold",
     textAlign: "center"
+  },
+  headingSub: {
+    fontSize: 20
+  },
+  separator: {
+    height: 1,
+    backgroundColor: "white"
   }
 });

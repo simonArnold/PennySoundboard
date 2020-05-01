@@ -30,16 +30,18 @@ const styles = StyleSheet.create({
     },
     button: {
         flex: 1,
+        flexGrow: 0,
         flexBasis: "30%",
         height: 40,
         marginHorizontal: 5,
         marginVertical: 10,
         justifyContent: "center",
-        backgroundColor: "lightgrey",
+        backgroundColor: "#FFD503",
         borderRadius: 3,
     },
     buttonText: {
-        textAlign: "center",
-        fontWeight: "bold",
+      color: "#CD1314",
+      textAlign: "center",
+      fontWeight: "bold",
     }
 });
