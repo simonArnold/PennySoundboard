@@ -1,5 +1,5 @@
 import React  from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
 import SoundPlayer from "react-native-sound-player";
 import sounds from "./sounds.json";
 
@@ -15,11 +15,11 @@ function SoundButton({title, file}: { title: string, file: any }) {
 }
 
 export default () => (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       {sounds.map((sound, i) => (
         <SoundButton key={i} title={sound.title} file={sound.file} />
       ))}
-    </View>
+    </ScrollView>
 );
 
 const styles = StyleSheet.create({

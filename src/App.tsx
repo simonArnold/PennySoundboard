@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Text, StatusBar } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import SoundButtons from "./SoundButtons";
+import Header from "./Header";
 
 export default function App() {
   return (
     <View style={styles.app}>
-      <Text style={styles.heading}>Penny Reeperbahn <Text style={styles.headingSub}>Soundboard</Text></Text>
+      <Header />
       <View style={styles.separator} />
       <SoundButtons />
     </View>
@@ -22,16 +23,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     flexWrap: "wrap",
     justifyContent: 'space-around',
-  },
-  heading: {
-    fontSize: 30,
-    paddingVertical: 10,
-    color: "#FFD503",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
-  headingSub: {
-    fontSize: 20
   },
   separator: {
     height: 1,
