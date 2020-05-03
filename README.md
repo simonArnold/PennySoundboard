@@ -44,7 +44,22 @@ A soundboard of the famous Spiegel TV reportage about the Reeperbahn Penny marke
 - (21:32) Achja? ✓
 
 ### Part 4
-- (1:14)
+- 0:14 Bier du Wichser alter✓
+- 0:36 Ein Baguette...
+- 1:14 Krautsalat und Tzatziki
+- 5:17 Ferdinand, immernoch
+- 5:01 Ich hab mir hier noch nie...
+- 5:33 BÄHNER
+- 8:45 Und, was suchen Sie? N Mann
+- 8:51 Es wird benötigt einfach
+- 8:55 5 Flaschen am Tag
+- 9:35 Erst die Tiere, dann meine Frau, dann ich
+- 14:18 Wir sind doch jetzt so komisch englisch
+- 14:40 Sollen wir denn zurückgeblieben sein
+- 16:43 Sie haben noch eine Flasche geöffnet?
+- 17:54 Halli Hallo
+- 20:24 ich kann gar nich mehr ohne die Leberwurst sein
+- 22:25 Er trinkt zuviel, ich trink zuviel
 
 ### Irgendwo
 - Schnarchen von Thorsten
