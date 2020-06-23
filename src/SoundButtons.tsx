@@ -1,46 +1,37 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
 import SoundPlayer from "react-native-sound-player";
 import sounds from "./sounds.json";
 import Share from "react-native-share";
+import { readFileRes } from "react-native-fs";
 
-const onShare = async () => {
+const onShare = async (title: string, file: string) => {
   try {
+    const base64Sound = await readFileRes(`raw/${file}.mp3`, "base64");
     await Share.open({
-      url: "file://android/app/src/main/res/raw/achja",
-      type: "audio/mp3"
+      url: `data:audio/mpeg;base64,` + base64Sound,
+      type: "audio/mp3",
+      filename: title,
+      failOnCancel: false
     })
   } catch (e) {
-    console.log(e);
-
+    console.error("Failed to load file", e);
   }
-  // try {
-  //   const result = await Share.share({
-  //     url: "android.resource://com.pennysoundboard/raw/achja.mp3",
-  //     message: "hey"
-  //   });
-  //   if (result.action === Share.sharedAction) {
-  //     if (result.activityType) {
-  //       // shared with activity type of result.activityType
-  //     } else {
-  //       // shared
-  //     }
-  //   } else if (result.action === Share.dismissedAction) {
-  //     // dismissed
-  //   }
-  // } catch (error) {
-  //   console.log(error.message);
-  // }
 };
 
 function SoundButton({ title, file }: { title: string, file: any }) {
-  function play() {
-    SoundPlayer.playSoundFile(file, "mp3");
-  }
   return (
-    <TouchableOpacity onPress={() => play()} onLongPress={() => onShare()} style={styles.button}>
-      <Text style={styles.buttonText}>{title}</Text>
-    </TouchableOpacity>
+    <View style={styles.buttonContainer}>
+      <TouchableOpacity
+        onPress={() => SoundPlayer.playSoundFile(file, "mp3")}
+        onLongPress={() => onShare(title, file)}
+        style={styles.button}>
+        <Text style={styles.buttonText}>{title}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.popup}>
+
+      </TouchableOpacity>
+    </View>
   );
 }
 
@@ -58,13 +49,17 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "flex-start",
   },
-  button: {
+  buttonContainer: {
+    position: "relative",
     flex: 1,
     flexGrow: 0,
     flexBasis: "30%",
     height: 40,
     marginHorizontal: 5,
     marginVertical: 10,
+  },
+  button: {
+    height: "100%",
     justifyContent: "center",
     backgroundColor: "#FFD503",
     borderRadius: 3,
@@ -73,5 +68,12 @@ const styles = StyleSheet.create({
     color: "#CD1314",
     textAlign: "center",
     fontWeight: "bold",
-  }
+  },
+  popup: {
+    backgroundColor: "green",
+    width: "30%",
+    height: "10%",
+    position: "absolute",
+    top: "100%",
+  },
 });
