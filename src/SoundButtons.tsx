@@ -4,6 +4,7 @@ import SoundPlayer from "react-native-sound-player";
 import sounds from "./sounds.json";
 import Share from "react-native-share";
 import { readFileRes } from "react-native-fs";
+import PopOver, { PopoverPlacement } from "react-native-popover-view";
 
 const onShare = async (title: string, file: string) => {
   try {
@@ -21,17 +22,18 @@ const onShare = async (title: string, file: string) => {
 
 function SoundButton({ title, file }: { title: string, file: any }) {
   return (
-    <View style={styles.buttonContainer}>
+    <PopOver from={(sourceRef, showPopover) => (
       <TouchableOpacity
         onPress={() => SoundPlayer.playSoundFile(file, "mp3")}
-        onLongPress={() => onShare(title, file)}
+        onLongPress={showPopover}
         style={styles.button}>
-        <Text style={styles.buttonText}>{title}</Text>
+        <Text ref={sourceRef} style={styles.buttonText}>{title}</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.popup}>
-
+    )}>
+      <TouchableOpacity style={styles.popover} onPress={() => onShare(title, file)}>
+        <Text>Share...</Text>
       </TouchableOpacity>
-    </View>
+    </PopOver>
   );
 }
 
@@ -49,17 +51,13 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "flex-start",
   },
-  buttonContainer: {
-    position: "relative",
+  button: {
     flex: 1,
     flexGrow: 0,
     flexBasis: "30%",
     height: 40,
     marginHorizontal: 5,
     marginVertical: 10,
-  },
-  button: {
-    height: "100%",
     justifyContent: "center",
     backgroundColor: "#FFD503",
     borderRadius: 3,
@@ -69,11 +67,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
   },
-  popup: {
-    backgroundColor: "green",
-    width: "30%",
-    height: "10%",
-    position: "absolute",
-    top: "100%",
+  popover: {
+    padding: 10,
   },
 });
