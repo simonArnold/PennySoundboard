@@ -22,14 +22,16 @@ const onShare = async (title: string, file: string) => {
 
 function SoundButton({ title, file }: { title: string, file: any }) {
   return (
-    <PopOver from={(sourceRef, showPopover) => (
-      <TouchableOpacity
-        onPress={() => SoundPlayer.playSoundFile(file, "mp3")}
-        onLongPress={showPopover}
-        style={styles.button}>
-        <Text ref={sourceRef} style={styles.buttonText}>{title}</Text>
-      </TouchableOpacity>
-    )}>
+    <PopOver
+      from={(sourceRef, showPopover) => (
+        <TouchableOpacity
+          onPress={() => SoundPlayer.playSoundFile(file, "mp3")}
+          onLongPress={showPopover}
+          delayLongPress={100}
+          style={styles.button}>
+          <Text ref={sourceRef} style={styles.buttonText}>{title}</Text>
+        </TouchableOpacity>
+      )}>
       <TouchableOpacity style={styles.popover} onPress={() => onShare(title, file)}>
         <Text>Share...</Text>
       </TouchableOpacity>
